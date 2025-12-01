@@ -136,8 +136,18 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50px;
+  cursor: pointer;
 }
 
 .love{
   color: red;
+}
+
+.right > div h4{
+  pointer-events: none;
+}
+
+.right > div h6{
+  pointer-events: none;
 }
