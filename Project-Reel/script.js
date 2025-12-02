@@ -32,7 +32,7 @@ const posts = [
     video: "video/video3.mp4",
     userProfile: "https://images.pexels.com/photos/27765641/pexels-photo-27765641.jpeg"
   },
-   {
+  {
     username: "Beauty_master",
     likeCount: 942,
     isLiked: true,
@@ -43,7 +43,7 @@ const posts = [
     video: "video/video4.mp4",
     userProfile: "https://images.pexels.com/photos/29498623/pexels-photo-29498623.jpeg"
   },
-   {
+  {
     username: "riya_18",
     likeCount: 942,
     isLiked: true,
@@ -56,15 +56,18 @@ const posts = [
   },
 ];
 
-var sum = ''
-posts.forEach((elem, idx)=>{
-  sum = sum + `<div class="reel">
+var allreels = document.querySelector('.all-reels')
+
+function addData() {
+  var sum = ''
+  posts.forEach((elem, idx) => {
+    sum = sum + `<div class="reel">
           <video autoplay loop muted src="${elem.video}"></video>
           <div class="bottom">
             <div class="user">
               <img src="${elem.userProfile}" alt="">
               <h4>${elem.username}</h4>
-              <button>${elem.isFollowed?'Unfollow':'Follow'}</button>
+              <button id=${idx} class=follow >${elem.isFollowed ? 'Unfollow' : 'Follow'}</button>
             </div>
             <h3>${elem.caption}</h3>
           </div>
@@ -86,8 +89,34 @@ posts.forEach((elem, idx)=>{
             </div>
           </div>
         </div>`
+  })
+
+  allreels.innerHTML = sum;
+
+}
+
+addData()
+
+allreels.addEventListener('click', function (dets) {
+
+  if (dets.target.className == 'like') {
+    if (!posts[dets.target.id].isLiked) {
+      posts[dets.target.id].likeCount++;
+      posts[dets.target.id].isLiked = true;
+    } else {
+      posts[dets.target.id].likeCount--;
+      posts[dets.target.id].isLiked = false;
+    }
+  }
+
+  if(dets.target.className == 'follow'){
+    if (!posts[dets.target.id].isFollowed) {
+      posts[dets.target.id].isFollowed = true;
+    }
+    else{
+      posts[dets.target.id].isFollowed = false;
+    }
+  }
+
+  addData()
 })
-
-var allreels = document.querySelector('.all-reels')
-
-allreels.innerHTML = sum
