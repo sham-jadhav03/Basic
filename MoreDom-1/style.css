@@ -36,6 +36,11 @@ main{
 .card p span{
     font-weight: 600;
     color: royalblue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.card p span:hover{
+    color: rgb(25, 25, 171);
 }
 
 .outer{
@@ -74,5 +79,5 @@ main{
     cursor: pointer;
 }
 .bottom button:active{
-    scale: 0.95;
+    scale: 0.97;
 }

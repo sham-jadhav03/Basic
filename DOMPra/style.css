@@ -15,10 +15,11 @@ body{
     justify-content: center;
     align-items: center;
     background-color: black;
+    color: white;
 }
 
 .box{
     height: 200px;
     width: 200px;
-    background-image: url();
+    background-image: linear-gradient(to right, red , yellow);
 }
